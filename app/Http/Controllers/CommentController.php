@@ -9,36 +9,34 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
 
-    public function index()
-    {
-        return Comment::all();
+    public function store(Request $request, Post $post){
+        $request->validate([
+            'content' => 'required'
+        ]);
+
+        $post->comments()->create([
+            'content' => $request->input('content'),
+            'user_id' => auth()->user()->id,
+            'post_id' => $post->id
+        ]);
+
+        return redirect()->back();
     }
 
-    public function store(Request $request)
-    {
-        $post = Post::find($request->post_id);
-        if($post == null){
-            return response()->json(['message' => 'Post not found'], 404);
-        } else {
-            $comment = Comment::create($request->all());
-            return response()->json($comment, 201);
-        }
+    public function edit(Request $request){
+        $request->validate([
+            'content' => 'required'
+            , 'comment_id' => 'required'
+        ]);
+
+        Comment::where('id', $request->input('comment_id'))
+            ->update([
+                'content' => $request->input('content')
+            ]);
     }
 
-//    public function show( )
-//    {
-//        return $comment;
-//    }
-
-    public function update(Request $request, Comment $comment)
-    {
-        $comment->update($request->all());
-        return response()->json($comment, 200);
-    }
-
-    public function destroy(Comment $comment)
-    {
+    public function destroy(Comment $comment){
         $comment->delete();
-        return response()->json(null, 204);
+        return redirect()->back();
     }
 }
