@@ -23,6 +23,7 @@ class Posts extends Migration
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->softDeletes();
         });
     }
 
