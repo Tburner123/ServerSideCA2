@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
@@ -23,3 +24,7 @@ Route::resource('/blog', PostsController::class);
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => '/admin', 'as' => 'admin.',], function () {
+    Route::get('/', [AdminController::class, 'index'])->name('index');
+});

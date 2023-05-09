@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Providers\RouteServiceProvider;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -43,8 +44,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function post()
+    public function post(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role_id->name === 'admin';
+    }
+
+    public function getRedirectRoute(){
+        if($this->isAdmin()){
+            return RouteServiceProvider::ADMINDASHBOARD;
+        }
+        return RouteServiceProvider::HOME;
     }
 }
