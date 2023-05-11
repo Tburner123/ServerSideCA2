@@ -30,9 +30,9 @@ class UsersController extends Controller
             "name" => "required",
             "email" => "required",
             "password" => "required",
-            "role_id" => "required",
+            "role" => "required",
         ]);
-        $role = Role::find($request->role_id);
+        $role = Role::where('name',$request->role)->first();
         $user = Auth::user();
         if($user->role->name === 'admin'){
             $new_user = new User();
@@ -48,5 +48,35 @@ class UsersController extends Controller
         }
     }
 
+    public function show($id)
+    {
+       $user = User::find($id);
+         return view('admin.users.show')->with('user',$user);
+    }
+
+    public function edit(User $user)
+    {
+        return view('admin.users.edit')->with('user',$user)->with('roles',Role::all());
+    }
+
+    public function update(Request $request, User $user){
+        $request->validate([
+            "name" => "required",
+            "email" => "required",
+            "role" => "required",
+        ]);
+        $role = Role::where('name',$request->role)->first();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role()->associate($role);
+        $user->save();
+        return redirect()->route('admin.users.index');
+    }
+
+
+    public function destroy(User $user){
+        $user->delete();
+        return redirect()->route('admin.users.index')->with('success','User deleted successfully');
+    }
 
 }

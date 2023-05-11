@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
         // Create a constant admin account
         $admin = new User([
             'name' => 'Jane Doe',
-            'email' => 'admin1@example.com',
+            'email' => 'admin1@admin.com',
             'password' => bcrypt('password'),
             'role_id' => $role_admin->id,
             'email_verified_at' => now(),
