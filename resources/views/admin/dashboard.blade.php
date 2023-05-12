@@ -13,6 +13,7 @@
                 <h3 class="text-sm tracking-wider">Total User</h3>
                 <p class="text-3xl">{{$num_user}}</p>
             </div>
+            <a class="no-underline hover:underline" href="/userTable">view more</a>
         </div>
         <div class="flex items-center bg-white border rounded-sm overflow-hidden shadow">
             <div class="p-4 bg-blue-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none"
