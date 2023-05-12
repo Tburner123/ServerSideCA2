@@ -14,6 +14,8 @@ class UsersController extends Controller
         return view('admin.users.index')->with('users',$users);
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -48,10 +50,9 @@ class UsersController extends Controller
         }
     }
 
-    public function show($id)
+    public function show(User $user)
     {
-       $user = User::find($id);
-         return view('admin.users.show')->with('user',$user);
+         return view('admin.users.show')->with('user',$user)->with('posts',$user->post);
     }
 
     public function edit(User $user)

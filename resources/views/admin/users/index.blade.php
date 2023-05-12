@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+ <div class="mb-9 mx-9">
     <div class="flex justify-between items-center pt-2">
         <h1 class="text-3xl font-bold text-gray-700 dark:text-gray-200">Users</h1>
         <a href="/admin/users/create/" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add User</a>
@@ -31,10 +31,10 @@
             @foreach($users as $user)
                 @if($user->id != \Illuminate\Support\Facades\Auth::user()->id)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-1xl">
+                    <th  scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-1xl">
                         {{ $user->id }}
                     </th>
-                    <td class="px-6 py-4 text-2xl">
+                    <td class="px-6 py-4 text-2xl" onclick="window.location='/admin/users/{{$user->id}}'">
                         {{ $user->name }}
                     </td>
                     <td class="px-6 py-4 text-2xl">
@@ -50,7 +50,6 @@
                             @csrf
                             @method('DELETE')
                         </form>
-
                     </td>
                 </tr>
                 @endif
@@ -58,4 +57,5 @@
             </tbody>
         </table>
     </div>
+ </div>
 @endsection
