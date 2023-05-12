@@ -18,5 +18,18 @@
         {{ $post->description }}
     </p>
 </div>
-
+@guest
+           
+@else
+        
+<div class="max-w-lg shadow-md">
+      <form action="" class="w-full p-4">
+        <label class="block mb-2">
+          <span class="text-gray-600">Add a comment</span>
+          <textarea class="block w-full mt-1 rounded" rows="3"></textarea>
+        </label>
+        <button class="px-3 py-2 text-sm text-blue-100 bg-blue-600 rounded">Comment</button>
+      </form>
+</div>
+@endguest
 @endsection 

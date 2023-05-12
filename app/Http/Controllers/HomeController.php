@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $posts = Post::select('title ', 'discription',)->get();
+
+        return view('home')->with('posts', $posts);
     }
 }

@@ -25,6 +25,7 @@ Route::resource('/blog', PostsController::class);
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/userTable', [App\Http\Controllers\AdminController::class, 'userTable'])->name('/userTable');
 
 Route::middleware('admin.auth')->group(function () {
     Route::group(['prefix' => '/admin', 'as' => 'admin.',], function () {

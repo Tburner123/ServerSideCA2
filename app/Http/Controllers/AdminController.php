@@ -23,4 +23,12 @@ class AdminController extends Controller
             'posts' => $posts,
         ]);
     }
+
+    public function userTable()
+    {
+        $users = User::select('name', 'email', 'id','role_id')->get();
+        return view('admin.userTable')->with('users', $users);
+    }
+
+
 }
