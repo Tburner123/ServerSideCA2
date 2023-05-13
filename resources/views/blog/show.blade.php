@@ -38,7 +38,8 @@
       <form 
       class="w-full p-4"
       action="/comment"
-        method="GET"
+        method="POST"
+        enctype="multipart/form-data"
        >
         @csrf
         
@@ -46,6 +47,7 @@
           <span class="text-gray-600">Add a comment</span>
           <textarea name="content" class="block w-full mt-1 rounded" rows="3"></textarea>
         </label>
+        <input type="hidden" name="post_id" value="{{ $post->id }}">
 
         <button type="submit" class="px-3 py-2 text-sm text-blue-100 bg-blue-600 rounded">Comment</button>
       </form>
