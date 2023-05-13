@@ -40,9 +40,20 @@
                         {{-- {{ config('app.name', 'Game blog') }} --}} Game Blog 
                     </a>
                 </div>
+                <div class="search @yield('search') relative rounded-md shadow-sm">
+                    <form method="POST" action="/search">
+                        <div class = " flex items-center justify-center">
+                        <input type="text" name="q"id="search" class="form-input w-full sm:text-sm sm:leading-5 rounded-md" placeholder="Search...">
+                        <button type="submit" class="ml-3 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">
+                          Search
+                        </button>
+                      </div>
+                    </form>
+                  </div>
                 @include('layouts.nav')
             </div>
         </header>
+        
 
         <div class="content @yield('content-class')">
             @yield('content')
