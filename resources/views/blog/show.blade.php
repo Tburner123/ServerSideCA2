@@ -24,15 +24,27 @@
  @foreach($comments as $comment)
 <div class="w-4/5 m-auto pt-20">
     
+    
 
     <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
-        {{ $comment->comment }}
+        {{ $comment->content}}
     </p>
     
 </div>
 @endforeach
 
 @else
+@foreach($comments as $comment)
+<div class="w-4/5 m-auto pt-20">
+    
+    
+
+    <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
+        {{ $comment->content}}
+    </p>
+    
+</div>
+@endforeach
         
 <div class="max-w-lg shadow-md">
       <form 
@@ -45,7 +57,7 @@
         
         <label class="block mb-2">
           <span class="text-gray-600">Add a comment</span>
-          <textarea name="content" class="block w-full mt-1 rounded" rows="3"></textarea>
+          <textarea  name="content" class="block w-full mt-1 rounded" rows="3"></textarea>
         </label>
         <input type="hidden" name="post_id" value="{{ $post->id }}">
 
