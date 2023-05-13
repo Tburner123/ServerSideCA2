@@ -27,7 +27,7 @@ Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/userTable', [App\Http\Controllers\AdminController::class, 'userTable'])->name('/userTable');
-Route::resource('/comment',App\Http\Controllers\CommentController::class  );
+Route::resource('/comment',  App\Http\Controllers\CommentsController::class );
 
 Route::middleware('admin.auth')->group(function () {
     Route::group(['prefix' => '/admin', 'as' => 'admin.',], function () {
