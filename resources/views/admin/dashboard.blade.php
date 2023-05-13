@@ -41,6 +41,35 @@
         </div>
     </div>
 
+    <div class="m-9 relative overflow-x-auto shadow-md sm:rounded-lg">
+        @isset($posts)
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-200 uppercase bg-gray-700 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-2xl">ID</th>
+                    <th scope="col" class="px-6 py-3 text-2xl">Title</th>
+                    <th scope="col" class="px-6 py-3 text-2xl">Slug</th>
+                    <th scope="col" class="px-6 py-3 text-2xl">Vote</th>
+                    <th scope="col" class="px-6 py-3 text-2xl">Date Created</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($posts as $post)
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <th  scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-1xl">
+                            {{ $post->id }}
+                        </th>
+                        <td class="px-6 py-4 text-2xl">{{$post->title}}</td>
+                        <td class="px-6 py-4 text-2xl">{{$post->slug}}</td>
+                        <td class="px-6 py-4 text-2xl">num votes</td>
+                        <td class="px-6 py-4 text-2xl">{{$post->created_at}}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        @endisset
+    </div>
+
 {{--<button data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar" aria-controls="separator-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">--}}
 {{--    <span class="sr-only">Open sidebar</span>--}}
 {{--    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">--}}
