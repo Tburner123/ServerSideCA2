@@ -1,19 +1,21 @@
 @extends('layouts.app')
-
+@section('content-class', 'login-register-background  ')
 @section('content')
-<main class="sm:container sm:mx-auto sm:max-w-lg sm:mt-10">
-    <div class="flex">
-        <div class="w-full">
-            <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
-                <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
+{{-- <img src="https://t4.ftcdn.net/jpg/04/42/21/53/360_F_442215355_AjiR6ogucq3vPzjFAAEfwbPXYGqYVAap.jpg" alt="Login Register Background" class="login-register-background"> --}}
+
+<div class="login-register-background">
+    <div class="pt-9 login-container w-2/4 mx-auto">
+            <section class="flex flex-col break-words bg-white  sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg ">
+
+                <header class="font-semibold bg-gray-200 opacity-2 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
                     {{ __('Login') }}
                 </header>
 
-                <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST" action="{{ route('login') }}">
+                <form class="w-full opacity-2  px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST" action="{{ route('login') }}">
                     @csrf
 
-                    <div class="flex flex-wrap">
+                    <div class="flex  flex-wrap opacity-2 ">
                         <label for="email" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
                             {{ __('E-Mail Address') }}:
                         </label>
@@ -80,5 +82,5 @@
             </section>
         </div>
     </div>
-</main>
+
 @endsection

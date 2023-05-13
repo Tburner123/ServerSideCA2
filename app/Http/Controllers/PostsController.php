@@ -76,6 +76,7 @@ class PostsController extends Controller
     {
         $post = Post::where('slug', $slug)->first();
         $comments = $post->comment;
+        $userName = Comment::where('post_id', $post->id)->first();
         return view('blog.show', compact('post', 'comments'));
     }
 

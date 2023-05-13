@@ -31,20 +31,20 @@
     </style> --}}
     
 </head>
-<body class="bg-gray-100 h-screen antialiased leading-none font-sans">
-    <div id="app">
+<body class="@yield('content-class') bg-gray-100 h-screen antialiased leading-none font-sans">
+    <div id="app" class = "@yield('content-class')">
         <header class="bg-gray-800 py-6">
             <div class="container mx-auto flex justify-between items-center px-6">
                 <div>
                     <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
-                        {{ config('app.name', 'Laravel') }}
+                        {{-- {{ config('app.name', 'Game blog') }} --}} Game Blog 
                     </a>
                 </div>
                 @include('layouts.nav')
             </div>
         </header>
 
-        <div>
+        <div class="content @yield('content-class')">
             @yield('content')
         </div>
 

@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $this->role->name === 'admin';
     }
 
+    public function comment(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function getRedirectRoute(){
         if($this->isAdmin()){
             return RouteServiceProvider::ADMINDASHBOARD;
