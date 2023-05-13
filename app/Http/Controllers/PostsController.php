@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
+
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -72,8 +74,10 @@ class PostsController extends Controller
      */
     public function show($slug)
     {
+        $post = Post::where('slug', $slug)->first();
+        $comments = $post->comment();
         return view('blog.show')
-            ->with('post', Post::where('slug', $slug)->first());
+            ->with('post', $post)->with('comments',$comments);
     }
 
     /**

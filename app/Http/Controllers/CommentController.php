@@ -10,9 +10,9 @@ class CommentController extends Controller
 {
 
     public function store(Request $request, Post $post){
-        $request->validate([
-            'content' => 'required'
-        ]);
+        // $request->validate([
+        //     'content' => 'required'
+        // ]);
 
         $post->comments()->create([
             'content' => $request->input('content'),
