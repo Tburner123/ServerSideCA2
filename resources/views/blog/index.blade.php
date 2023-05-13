@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('search', 'searchShow')
 @section('content')
 <div class="w-4/5 m-auto text-center">
     <div class="py-15 border-b border-gray-200">
@@ -28,7 +28,7 @@
 @endif
 
 @foreach ($posts as $post)
-    <div class="sm:grid grid-cols-4 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
+    <div class="sm:grid grid-cols-4 gap-10 w-4/5 mx-auto py-15 border-b border-gray-200">
         <div style="width:150px; height:150px"  >
             <img  src="{{ asset('images/' . $post->image_path) }}" alt="">
         </div>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('content-class', 'login-register-background ')
+@section('content-class', 'login-register-background')
 @section('content')
 <div class="login-register-background">
     <div class="pt-9 login-container w-2/4 mx-auto">

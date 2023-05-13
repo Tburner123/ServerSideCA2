@@ -10,7 +10,7 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostsController extends Controller
 {
- 
+
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
@@ -24,6 +24,21 @@ class PostsController extends Controller
     {
         return view('blog.index')
             ->with('posts', Post::orderBy('updated_at', 'DESC')->get());
+    }
+
+    public function filter(Request $request)
+    {
+        $searchQuery = $request->input('q');
+
+        $query = Post::orderBy('updated_at', 'DESC');
+
+        if ($searchQuery) {
+            $query->where('title', 'LIKE', '%' . $searchQuery . '%');
+        }
+
+        return view('blog.index')
+            ->with('posts', $query->get())
+            ->with('searchQuery', $searchQuery);
     }
 
     /**
@@ -133,4 +148,3 @@ class PostsController extends Controller
             ->with('message', 'Your post has been deleted!');
     }
 }
-

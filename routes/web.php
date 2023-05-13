@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +25,11 @@ Route::get('/', [PagesController::class, 'index']);
 Route::resource('/blog', PostsController::class);
 
 Auth::routes();
-
+Route::resource('/search',App\Http\Controllers\SearchController::class );
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/userTable', [App\Http\Controllers\AdminController::class, 'userTable'])->name('/userTable');
 Route::resource('/comment',  App\Http\Controllers\CommentsController::class );
+
 
 Route::middleware('admin.auth')->group(function () {
     Route::group(['prefix' => '/admin', 'as' => 'admin.',], function () {

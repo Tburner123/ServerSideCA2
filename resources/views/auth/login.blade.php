@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('content-class', 'login-register-background  ')
+@section('content-class', 'login-register-background')
 @section('content')
 
 {{-- <img src="https://t4.ftcdn.net/jpg/04/42/21/53/360_F_442215355_AjiR6ogucq3vPzjFAAEfwbPXYGqYVAap.jpg" alt="Login Register Background" class="login-register-background"> --}}
