@@ -8,7 +8,7 @@
 
   
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 
 ## Description
 
@@ -18,11 +18,20 @@ A games forum is an online community where gamers can discuss various aspects of
 The featurs of the website  will be mentioned below.
 ## Table of Contents
 
-- [Installation](#installation)
-- [Styling](#styling)
-- [Functions](#function)
-- [Users](#users)
--
+
+
+- [Server Side CA4](#server-side-ca4)
+  - [Games Forum](#games-forum)
+    - [*LEE XUAN ONG*](#lee-xuan-ong)
+    - [*PHILIP PHILIP*](#philip-philip)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Resources Used](#resources-used)
+  - [Styling](#styling)
+  - [Functions](#functions)
+  - [Users](#users)
+
 ## Installation
 
 1. Clone the repository
@@ -33,34 +42,8 @@ The featurs of the website  will be mentioned below.
 6. Run database migrations: `php artisan migrate`
 7. Seed the database: `php artisan db:seed`
 8. Start the development server: `php artisan serve`
-
-## Styling 
-In our Laravel app, we utilized **TailwindCSS** **CSS** for styling and customizing the appearance of our website. With Tailwind, we were able to easily add pre-defined classes to our HTML elements and create a visually appealing and responsive design. We also used **JavaScript** to add interactivity to our app. By combining these two technologies, we were able to create a modern and user-friendly interface for our website, which enhanced the overall user experience.
-
-## Functions
-The website will have the following features:
-- User registration and login
-- User profile
-- User roles and permissions
-- Forum
-- Search
-- Filter
-- Admin panel
-- Comments
-- Delete comments
-- Likes 
-
-## Users
-The website will have the following users:
-- Admin
-  Email:admin1@admin.com
-  Password:password
-- User
-  Email:user1@user.com
-  Password:password
-
-
-## Resources Used
+   
+   ## Resources Used
 
 Here are the resources we used to build this project:
 
@@ -80,3 +63,31 @@ Here are the resources we used to build this project:
 
 
 ![CSS Icon](https://img.icons8.com/color/48/000000/css3.png) [CSS Tutorial by w3schools.com](https://www.w3schools.com/css/)
+
+## Styling 
+In our Laravel app, we utilized **TailwindCSS** **CSS** for styling and customizing the appearance of our website. With Tailwind, we were able to easily add pre-defined classes to our HTML elements and create a visually appealing and responsive design. We also used **JavaScript** to add interactivity to our app. By combining these two technologies, we were able to create a modern and user-friendly interface for our website, which enhanced the overall user experience.
+
+## Functions
+The website will have the following features:
+- User registration and login
+- User profile
+- User roles and permissions
+- Forum
+- Search
+- Filter
+- Admin panel
+- Comments
+- Delete comments
+- Likes 
+
+## Users
+The website has two types of users teh type and their login details are as follows:
+- Admin
+  Email:admin1@admin.com
+  Password:password
+- User
+  Email:user1@user.com
+  Password:password
+
+
+
