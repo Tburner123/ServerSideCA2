@@ -31,7 +31,7 @@
 
 @if (Auth::check())
     <div class="pt-15 w-4/5 m-auto">
-        <a 
+        <a
             href="/blog/create"
             class="bg-blue-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
             Create post
@@ -44,7 +44,7 @@
         <div class="col-span-1"  >
             <img  src="{{ asset('images/' . $post->image_path) }}"  class ="blogIndex"alt="">
         </div>
-        <div div class="col-span-2"> 
+        <div div class="col-span-2">
             <h2 class="text-gray-700 font-bold text-5xl pb-4">
                 {{ $post->title }}
             </h2>
@@ -60,10 +60,26 @@
             <a href="/blog/{{ $post->slug }}" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
                 Keep Reading
             </a>
-
+            <div class="flex  mt-10">
+                <div class="p-5 ">{{$post->votes}}</div>
+                <div class="flex ">
+                    <form action="/vote/{{ $post->id }}/like" method="POST" class="p-5">
+                        @csrf
+                        <button type="submit" class="bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+                            Up Vote
+                        </button>
+                    </form>
+                    <form action="/vote/{{ $post->id }}/dislike" method="POST" class="p-5">
+                        @csrf
+                        <button type="submit" class="bg-red-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+                            Down vote
+                        </button>
+                    </form>
+                </div>
+            </div>
             @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
                 <span class="float-right">
-                    <a 
+                    <a
                         href="/blog/{{ $post->slug }}/edit"
                         class="text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">
                         Edit
@@ -71,7 +87,7 @@
                 </span>
 
                 <span class="float-right">
-                     <form 
+                     <form
                         action="/blog/{{ $post->slug }}"
                         method="POST">
                         @csrf
@@ -87,7 +103,7 @@
                 </span>
             @endif
         </div>
-    </div>    
+    </div>
 @endforeach
 
 @endsection
