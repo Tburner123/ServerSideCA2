@@ -30,7 +30,7 @@
 @foreach ($posts as $post)
     <div class="sm:grid grid-cols-3 gap-10 w-4/5 mx-auto py-15 border-b border-gray-200">
         <div class="col-span-1"  >
-            <img  src="{{ asset('images/' . $post->image_path) }}" alt="">
+            <img  src="{{ asset('images/' . $post->image_path) }}"  class ="blogIndex"alt="">
         </div>
         <div div class="col-span-2"> 
             <h2 class="text-gray-700 font-bold text-5xl pb-4">
