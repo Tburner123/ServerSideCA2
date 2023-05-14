@@ -41,7 +41,7 @@
 
     @else 
     <div class="mr-9 ml-9 mt-6">
-        <form action="/change"
+        <form action="/change/{{ $user->id }}"
               method="POST"
               enctype="multipart/form-data">
             @csrf

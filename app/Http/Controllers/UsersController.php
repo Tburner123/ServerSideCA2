@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -62,7 +63,7 @@ class UsersController extends Controller
 
     public function update(Request $request, User $user){
         $flag = false ;
-        if($user->role === 'user'){
+        if($user->role_id === 1){
             $flag = true;
         }
         $request->validate([
@@ -77,7 +78,7 @@ class UsersController extends Controller
         $user->save();
 
         if($flag){
-            return view('blog.index');
+            return view('blog.index')->with('posts', Post::orderBy('updated_at', 'DESC')->get());
         }
         return redirect()->route('admin.users.index');
     }
