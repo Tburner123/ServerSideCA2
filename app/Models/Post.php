@@ -26,7 +26,7 @@ class Post extends Model
 
     public function tag()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class,'posts_and_tags','post_id','tag_id');
     }
 
     public function sluggable(): array

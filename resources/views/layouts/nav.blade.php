@@ -1,6 +1,6 @@
 
 <button id = "button" data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-gray-200 text-4xl font-normal text-white  hover:bg-blue-800 focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false">
-    
+
     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
   </button>
   <div id="my-div"class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
@@ -21,7 +21,7 @@
            class="block py-2 pl-3 pr-4  rounded hover:bg-blue-800 text-4xl font-normal text-white  hover:bg-blue-800 hover:text-gray-900"
            onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-        
+
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
             {{ csrf_field() }}
         </form>
@@ -45,7 +45,7 @@
              </li>
                 @endif
         @else
-        
+
             <li>
             <a class="block py-2 pl-3 pr-4  rounded hover:bg-blue-800 text-4xl font-normal text-white  hover:bg-blue-800 hover:text-gray-900" href="/blog/create">Create Post</a>
             </li>
@@ -54,13 +54,13 @@
                class="block py-2 pl-3 pr-4  rounded hover:bg-blue-800 text-4xl font-normal text-white  hover:bg-blue-800 hover:text-gray-900"
                onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-            
+
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                 {{ csrf_field() }}
             </form>
         </li>
-        <li><a href="users/{{Auth::user()->id}}/edit" class="block py-2 pl-3 pr-4 rounded text-4xl font-normal text-white  hover:bg-white hover:text-black">{{ Auth::user()->name }}</a>
-            
+        <li><a href="/users/{{Auth::user()->id}}/edit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">{{ Auth::user()->name }}</a>
+
         </li>
         @endguest
     @endif
