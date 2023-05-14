@@ -61,6 +61,10 @@ class UsersController extends Controller
     }
 
     public function update(Request $request, User $user){
+        $flag = false ;
+        if($user->role === 'user'){
+            $flag = true;
+        }
         $request->validate([
             "name" => "required",
             "email" => "required",
@@ -71,6 +75,10 @@ class UsersController extends Controller
         $user->email = $request->email;
         $user->role()->associate($role);
         $user->save();
+
+        if($flag){
+            return view('blog.index');
+        }
         return redirect()->route('admin.users.index');
     }
 
