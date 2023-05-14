@@ -9,15 +9,22 @@
     </div>
 </div>
 
-<div class="m-4 h-9 w-5/5 justify-center flex items-center  relative rounded-md shadow-sm">
+<div class="m-4 h-9 w-5/5 justify-center inline-flex items-center  relative rounded-md shadow-sm">
     <form method="GET" action="/search">
         @csrf
         <div class = " h-9 flex items-center justify-center">
-        <input type="text" name="q"id="search" class="form-input w-full sm:text-sm sm:leading-5 rounded-md" placeholder="Search...">
-        <button type="submit" class="ml-3 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">
-          Search
-        </button>
-      </div>
+            <input type="text" name="q"id="search" class="form-input w-full sm:text-sm sm:leading-5 rounded-md" placeholder="Search...">
+            <button type="submit" class="ml-3 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">
+              Search
+            </button>
+          </div>
+        <label for="filter" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Filter options </label>
+<select id="filter" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+  <option selected value ="" >Filter Options </option>
+  <option value="1">Action </option>
+  <option value="2">Adventure</option>  
+</select>
+        
     </form>
   </div>
 
@@ -47,7 +54,13 @@
         <div div class="col-span-2">
             <h2 class="text-gray-700 font-bold text-5xl pb-4">
                 {{ $post->title }}
-            </h2>
+            </h2> @if($post->tag()->count() > 0)
+            @foreach($post->tag as $tag)
+                <p href="" class="tags bg-green-100 text-green-800 text-m font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 mb-2">
+                    {{ $tag->tag }}
+                </p>
+            @endforeach
+        @endif<br>
 
             <span class="text-gray-500">
                 By <span class="font-bold italic text-gray-800">{{ $post->user->name }}</span>, Created on {{ date('jS M Y', strtotime($post->updated_at)) }}
@@ -56,6 +69,7 @@
             <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
                 {{ $post->description }}
             </p>
+           
 
             <a href="/blog/{{ $post->slug }}" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
                 Keep Reading

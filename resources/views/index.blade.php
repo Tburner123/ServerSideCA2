@@ -56,12 +56,15 @@
                 
                     <div class="  bg-gray-50 border-gray-200 rounded-lg p-2 md:p-2 ">
                         
-                        <p href="#" class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 mb-2">
-                            
-                            Design
-                        </p>
                         <h2 class="text-gray-900 dark:text-white text-3xl font-extrabold mb-2"> {{ $post->title }}</h2>
-                        <img  src="{{ asset('images/' . $post->image_path) }}"  class ="blogIndex"alt="">
+                        @if($post->tag()->count() > 0)
+                        @foreach($post->tag as $tag)
+                            <p href="#" class="tags bg-green-100 text-green-800 text-m font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 mb-2">
+                                {{ $tag->tag }}
+                            </p>
+                        @endforeach
+                    @endif
+                        <img  src="{{ asset('images/' . $post->image_path) }}"  class ="blogIndex" alt="">
                         <p class=" overflow-hidden max-h-15 text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">{{ $post->description }}</p>
                         <a 
                     href="/blog"
