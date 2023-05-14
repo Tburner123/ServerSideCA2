@@ -19,12 +19,12 @@
             </button>
           </div>
         <label for="filter" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Filter options </label>
-<select id="filter" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+<select name="filter" id="filter" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
   <option selected value ="" >Filter Options </option>
   <option value="1">Action </option>
-  <option value="2">Adventure</option>  
+  <option value="2">Adventure</option>
 </select>
-        
+
     </form>
   </div>
 
@@ -69,7 +69,7 @@
             <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
                 {{ $post->description }}
             </p>
-           
+
 
             <a href="/blog/{{ $post->slug }}" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
                 Keep Reading

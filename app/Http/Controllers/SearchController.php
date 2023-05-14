@@ -18,10 +18,11 @@ class SearchController extends Controller
     public function index(Request $request)
     {
         $searchQuery = $request->input('q');
-        if($request->input('filter') !== ""){
+        if($request->input('filter') !== null){
             $tagQuery = Tag::find($request->input('filter'));
-            $posts = $tagQuery->posts;
-            $posts = $posts->where('title', 'LIKE', '%' . $searchQuery . '%');
+
+            $posts = $tagQuery->post();
+            $posts = $posts->where('title', 'LIKE', '%' . $searchQuery . '%')->get();
             return view('blog.index')
                 ->with('posts', $posts)
                 ->with('searchQuery', $searchQuery);
