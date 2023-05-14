@@ -11,7 +11,7 @@
 
 
 ## Description
-
+![image](https://github.com/Tburner123/ServerSideCA2/blob/main/images%20for%20the%20app/md1.png)
 This is a Laravel-based website with a blog. The website is built on the theme games with this in mind . 
 A games forum is an online community where gamers can discuss various aspects of gaming such as game releases, reviews, strategy guides, gameplay tips, and more. It is a platform where gamers can connect with like-minded individuals, share their experiences and knowledge, and engage in discussions on various topics related to gaming. 
 
