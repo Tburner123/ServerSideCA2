@@ -27,7 +27,7 @@ The featurs of the website  will be mentioned below.
   - [Description](#description)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
-  - [Resources Used](#resources-used)
+- [Resources Used](#resources-used)
   - [Styling](#styling)
   - [Functions](#functions)
   - [Users](#users)
@@ -43,23 +43,28 @@ The featurs of the website  will be mentioned below.
 7. Seed the database: `php artisan db:seed`
 8. Start the development server: `php artisan serve`
    
-   ## Resources Used
+# Resources Used
 
 Here are the resources we used to build this project:
 
- ![SQL Icon](https://img.icons8.com/color/48/000000/sql.png) [SQL Tutorial by w3schools.com](https://www.w3schools.com/sql/)
+![Laravel Icon](https://img.icons8.com/fluency/48/000000/laravel.png) [Laravel Official Documentation](https://laravel.com/docs)
+
+![SQL Icon](https://img.icons8.com/color/48/000000/sql.png) [SQL Tutorial by w3schools.com](https://www.w3schools.com/sql/)
 
 
 
-![Laravel Icon](https://img.icons8.com/color/48/000000/laravel.png) [Laravel Official Documentation](https://laravel.com/docs)
+![Laravel Icon](https://img.icons8.com/fluency/48/000000/laravel.png) [Laravel Official Documentation](https://laravel.com/docs)
 
 
 
 ![PHP Icon](https://img.icons8.com/officel/48/000000/php-logo.png) [PHP Manual by php.net](https://www.php.net/manual/en/)
 
 
+![Tailwind CSS Icon](https://cdn.iconscout.com/icon/free/png-64/free-tailwind-css-5285308-4406745.png) [Tailwind CSS Official Documentation](https://tailwindcss.com/docs) 
 
-![Tailwind Icon](https://img.icons8.com/color/48/000000/tailwind-css.png) [Tailwind CSS Official Documentation](https://tailwindcss.com/docs)
+
+
+
 
 
 ![CSS Icon](https://img.icons8.com/color/48/000000/css3.png) [CSS Tutorial by w3schools.com](https://www.w3schools.com/css/)
