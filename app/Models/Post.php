@@ -24,9 +24,9 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function tag(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function tag()
     {
-        return $this->hasMany(Tag::class);
+        return $this->belongsToMany(Tag::class);
     }
 
     public function sluggable(): array
