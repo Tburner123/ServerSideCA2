@@ -59,7 +59,7 @@
                 {{ csrf_field() }}
             </form>
         </li>
-        <li><a href="/users/{{Auth::user()->id}}/edit" class="block py-2 pl-3 pr-4  rounded hover:bg-blue-800 text-4xl font-normal text-white  hover:bg-blue-800 hover:text-gray-900">{{ Auth::user()->name }}</a>
+        <li><a href="/users/{{Auth::user()->id}}/edit" class="block py-2 pl-3 pr-4  rounded text-4xl font-normal text-white  hover:bg-white hover:text-gray-900">{{ Auth::user()->name }}</a>
 
         </li>
         @endguest

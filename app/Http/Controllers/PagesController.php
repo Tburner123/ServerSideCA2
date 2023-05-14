@@ -10,7 +10,7 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $posts = Post::select('title', 'description',)->get();
+        $posts = Post::all();
             if(Auth::check() && auth()->user()->role->name == 'admin') {
                 return redirect()->route('admin.index');
             } else {
