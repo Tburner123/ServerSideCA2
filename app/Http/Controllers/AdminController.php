@@ -13,14 +13,16 @@ class AdminController extends Controller
     {
         $user_role = Role::where('name','user')->first();
         $num_user = User::where('role_id',$user_role->id)->count();
+        $users = User::all()->take(10)->sortByDesc('created_at');
         $num_comment = \App\Models\Comment::all()->count();
-        $posts = Post::all()->sortByDesc('created_at');
+        $posts = Post::all()->sortByDesc('created_at')->take(10);
         $num_post = $posts->count();
         return view('admin.dashboard')->with([
             'num_post' => $num_post,
             'num_user' => $num_user,
             'num_comment' => $num_comment,
             'posts' => $posts,
+            'users' => $users
         ]);
     }
 

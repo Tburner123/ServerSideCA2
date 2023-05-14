@@ -13,7 +13,7 @@
                 <h3 class="text-sm tracking-wider">Total User</h3>
                 <p class="text-3xl">{{$num_user}}</p>
             </div>
-            <a class="no-underline hover:underline" href="/userTable">view more</a>
+            <a class="no-underline hover:underline hover:text-blue-600" href="/userTable">view more</a>
         </div>
         <div class="flex items-center bg-white border rounded-sm overflow-hidden shadow">
             <div class="p-4 bg-blue-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none"
@@ -26,6 +26,7 @@
                 <h3 class="text-sm tracking-wider">Total Post</h3>
                 <p class="text-3xl">{{$num_post}}</p>
             </div>
+            <a class="no-underline hover:underline hover:text-blue-600 " href="/blog">View more</a>
         </div>
         <div class="flex items-center bg-white border rounded-sm overflow-hidden shadow">
             <div class="p-4 bg-indigo-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none"
@@ -42,27 +43,32 @@
     </div>
 
     <div class="m-9 relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="flex justify-between items-center pt-2">
+            <h1 class="text-3xl font-bold text-gray-700 dark:text-gray-200">Posts</h1>
+        </div>
         @isset($posts)
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-200 uppercase bg-gray-700 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-6 py-3 text-2xl">ID</th>
-                    <th scope="col" class="px-6 py-3 text-2xl">Title</th>
-                    <th scope="col" class="px-6 py-3 text-2xl">Slug</th>
-                    <th scope="col" class="px-6 py-3 text-2xl">Vote</th>
-                    <th scope="col" class="px-6 py-3 text-2xl">Date Created</th>
+                    <th scope="col" class="px-6 py-3 text-2xl text-center">ID</th>
+                    <th scope="col" class="px-6 py-3 text-2xl text-center">Title</th>
+                    <th scope="col" class="px-6 py-3 text-2xl text-center">Slug</th>
+                    <th scope="col" class="px-6 py-3 text-2xl text-center">Vote</th>
+                    <th scope="col" class="px-6 py-3 text-2xl text-center">Views</th>
+                    <th scope="col" class="px-6 py-3 text-2xl text-center">Date Created</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($posts as $post)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th  scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-1xl">
+                        <th  scope="row" class=" text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-1xl">
                             {{ $post->id }}
                         </th>
-                        <td class="px-6 py-4 text-2xl">{{$post->title}}</td>
-                        <td class="px-6 py-4 text-2xl">{{$post->slug}}</td>
-                        <td class="px-6 py-4 text-2xl">num votes</td>
-                        <td class="px-6 py-4 text-2xl">{{$post->created_at}}</td>
+                        <td class="px-6 py-4 text-2xl text-center">{{$post->title}}</td>
+                        <td class="px-6 py-4 text-2xl text-center">{{$post->slug}}</td>
+                        <td class="px-6 py-4 text-2xl text-center">{{$post->votes}}</td>
+                        <td class="px-6 py-4 text-2xl text-center">{{$post->views}}</td>
+                        <td class="px-6 py-4 text-2xl text-center">{{$post->created_at}}</td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -70,6 +76,63 @@
         @endisset
     </div>
 
+
+    <div class="mb-9 mx-9">
+        <div class="flex justify-between items-center pt-2">
+            <h1 class="text-3xl font-bold text-gray-700 dark:text-gray-200">Users</h1>
+        </div>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-200 uppercase bg-gray-700 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-2xl">
+                        #
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-2xl">
+                        Name
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-2xl">
+                        Email
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-2xl">
+                        Role
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-2xl">
+                        <span class="sr-only">Edit</span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($users as $user)
+                    @if($user->id != \Illuminate\Support\Facades\Auth::user()->id)
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <th  scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-1xl">
+                                {{ $user->id }}
+                            </th>
+                            <td class="px-6 py-4 text-2xl" onclick="window.location='/admin/users/{{$user->id}}'">
+                                {{ $user->name }}
+                            </td>
+                            <td class="px-6 py-4 text-2xl">
+                                {{ $user->email }}
+                            </td>
+                            <td class="px-6 py-4 text-2xl">
+                                {{$user->role->name}}
+                            </td>
+                            <td class="px-6 py-4 text-right text-2xl">
+                                <a href="/admin/users/{{$user->id}}/edit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</a>
+                                <a href="#" onclick="event.preventDefault(); document.getElementById('users-delete-{{$user->id}}').submit();" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Delete</a>
+                                <form id="users-delete-{{$user->id}}" action="/admin/users/{{$user->id}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                            </td>
+                        </tr>
+                    @endif
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 {{--<button data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar" aria-controls="separator-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">--}}
 {{--    <span class="sr-only">Open sidebar</span>--}}
 {{--    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">--}}

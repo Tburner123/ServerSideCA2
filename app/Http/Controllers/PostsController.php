@@ -107,6 +107,8 @@ class PostsController extends Controller
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->first();
+        $post->views += 1;
+        $post ->save();
         $comments = $post->comment;
         $userName = Comment::where('post_id', $post->id)->first();
         return view('blog.show', compact('post', 'comments'));
@@ -179,4 +181,5 @@ class PostsController extends Controller
         return redirect('/blog')
             ->with('message', 'Your post has been deleted!');
     }
+
 }

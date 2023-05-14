@@ -32,6 +32,8 @@ Route::get('/userTable', [App\Http\Controllers\AdminController::class, 'userTabl
 Route::resource('/comment',  App\Http\Controllers\CommentsController::class );
 Route::resource('/users',UsersController::class);
 Route::put('/change/{user}', [UsersController::class, 'update'])->name('change');
+Route::post('/vote/{post}/like', [\App\Http\Controllers\VoteController::class, 'like'])->name('like');
+Route::post('/vote/{post}/dislike', [\App\Http\Controllers\VoteController::class, 'dislike'])->name('dislike');
 
 Route::middleware('admin.auth')->group(function () {
     Route::group(['prefix' => '/admin', 'as' => 'admin.',], function () {
