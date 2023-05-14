@@ -28,11 +28,11 @@
 @endif
 
 @foreach ($posts as $post)
-    <div class="sm:grid grid-cols-4 gap-10 w-4/5 mx-auto py-15 border-b border-gray-200">
-        <div style="width:150px; height:150px"  >
+    <div class="sm:grid grid-cols-3 gap-10 w-4/5 mx-auto py-15 border-b border-gray-200">
+        <div class="col-span-1"  >
             <img  src="{{ asset('images/' . $post->image_path) }}" alt="">
         </div>
-        <div>
+        <div div class="col-span-2"> 
             <h2 class="text-gray-700 font-bold text-5xl pb-4">
                 {{ $post->title }}
             </h2>

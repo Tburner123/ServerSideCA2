@@ -51,23 +51,23 @@
 
                 
             </div> --}}
-            <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+            <div class="w-full py-8 px-4 mx-auto lg:py-16">
 
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12">
+                
+                    <div class="  bg-gray-50 border-gray-200 rounded-lg p-2 md:p-2 ">
                         <p href="#" class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 mb-2">
                             
                             Design
                         </p>
                         <h2 class="text-gray-900 dark:text-white text-3xl font-extrabold mb-2"> {{ $post->title }}</h2>
-                        <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">{{ $post->description }}</p>
+                        <p class=" overflow-hidden max-h-15 text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">{{ $post->description }}</p>
                         <a 
                     href="/blog"
                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"">
                     Find Out More
                 </a>
                     </div>
-                </div>
+                
             </div>
         @endforeach
     </div>
