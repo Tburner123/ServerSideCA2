@@ -8,6 +8,7 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use function PHPUnit\Framework\isEmpty;
 
 class PostsController extends Controller
 {
@@ -71,13 +72,27 @@ class PostsController extends Controller
 
         $request->image->move(public_path('images'), $newImageName);
 
-        Post::create([
+        $post = Post::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
             'image_path' => $newImageName,
             'user_id' => auth()->user()->id
         ]);
+
+
+        if($request->input('tags') !== null) {
+            $tags = $request->input('tags');
+            $tags = explode(', ', $tags);
+            $tagsId = [];
+            foreach($tags as $tag) {
+                $tag = Tag::firstOrCreate([
+                    'tag' => $tag
+                ]);
+                $tagsId[] = $tag->id;
+            }
+            $post->tag()->sync($tagsId);
+        }
 
         return redirect('/blog')
             ->with('message', 'Your post has been added!');
@@ -105,8 +120,12 @@ class PostsController extends Controller
      */
     public function edit($slug)
     {
+        $tags = Tag::all();
+        $post = Post::where('slug', $slug)->first();
+//        $added_tags = $post->tag();
+
         return view('blog.edit')
-            ->with('post', Post::where('slug', $slug)->first());
+            ->with('post', $post)->with('tags', $tags);
     }
 
     /**
@@ -122,14 +141,24 @@ class PostsController extends Controller
             'title' => 'required',
             'description' => 'required',
         ]);
+        $post = Post::where('slug', $slug)->first();
+        $post->update(['title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
+            'user_id' => auth()->user()->id]);
 
-        Post::where('slug', $slug)
-            ->update([
-                'title' => $request->input('title'),
-                'description' => $request->input('description'),
-                'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
-                'user_id' => auth()->user()->id
-            ]);
+        if($request->input('tags') !== null) {
+            $tags = $request->input('tags');
+            $tags = explode(', ', $tags);
+            $tagsId = [];
+            foreach($tags as $tag) {
+                $tag = Tag::firstOrCreate([
+                    'tag' => $tag
+                ]);
+                $tagsId[] = $tag->id;
+            }
+            $post->tag()->sync($tagsId);
+        }
 
         return redirect('/blog')
             ->with('message', 'Your post has been updated!');
@@ -143,7 +172,8 @@ class PostsController extends Controller
      */
     public function destroy($slug)
     {
-        $post = Post::where('slug', $slug);
+        $post = Post::where('slug', $slug)->first();
+        $post->tag()->sync([]);
         $post->delete();
 
         return redirect('/blog')
