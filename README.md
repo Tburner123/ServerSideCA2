@@ -47,7 +47,7 @@ The featurs of the website  will be mentioned below.
 
 Here are the resources we used to build this project:
 
-![Laravel Icon](https://img.icons8.com/fluency/48/000000/laravel.png) [Laravel Official Documentation](https://laravel.com/docs)
+
 
 ![SQL Icon](https://img.icons8.com/color/48/000000/sql.png) [SQL Tutorial by w3schools.com](https://www.w3schools.com/sql/)
 
