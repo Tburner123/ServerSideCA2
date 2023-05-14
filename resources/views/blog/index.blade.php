@@ -9,6 +9,18 @@
     </div>
 </div>
 
+<div class="m-4 h-9 w-5/5 justify-center flex items-center  relative rounded-md shadow-sm">
+    <form method="GET" action="/search">
+        @csrf
+        <div class = " h-9 flex items-center justify-center">
+        <input type="text" name="q"id="search" class="form-input w-full sm:text-sm sm:leading-5 rounded-md" placeholder="Search...">
+        <button type="submit" class="ml-3 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+
 @if (session()->has('message'))
     <div class="w-4/5 m-auto mt-10 pl-2">
         <p class="w-2/6 mb-4 text-gray-50 bg-green-500 rounded-2xl py-4 text-center">
