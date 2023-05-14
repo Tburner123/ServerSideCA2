@@ -91,7 +91,8 @@
                     </form>
                 </div>
             </div>
-            @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id || Auth::user()->role_id == 2)
+            @if (Auth::check())
+                @if (Auth::user()->id == $post->user_id || Auth::user()->isAdmin())
                 <span class="float-right">
                     <a
                         href="/blog/{{ $post->slug }}/edit"
@@ -115,6 +116,7 @@
 
                     </form>
                 </span>
+                    @endif
             @endif
         </div>
     </div>
