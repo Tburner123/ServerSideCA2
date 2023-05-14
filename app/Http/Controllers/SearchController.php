@@ -22,6 +22,7 @@ class SearchController extends Controller
         if ($searchQuery) {
             $query->where('title', 'LIKE', '%' . $searchQuery . '%');
         }
+        
 
         return view('blog.index')
             ->with('posts', $query->get())

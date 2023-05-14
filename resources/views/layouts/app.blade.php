@@ -33,15 +33,17 @@
 </head>
 <body class="@yield('content-class') bg-gray-100 h-screen antialiased leading-none font-sans">
     <div id="app" class = "@yield('content-class')">
-        <header class="bg-gray-800 py-6">
-            <div class="container mx-auto flex justify-between items-center px-6">
+        <nav class="border-gray-200 bg-black dark:bg-gray-800 dark:border-gray-700">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <div>
                     <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
                         {{-- {{ config('app.name', 'Game blog') }} --}} Game Blog 
                     </a>
                 </div>
+                
                 <div class="search @yield('search') relative rounded-md shadow-sm">
-                    <form method="POST" action="/search">
+                    <form method="GET" action="/search">
+                        @csrf
                         <div class = " flex items-center justify-center">
                         <input type="text" name="q"id="search" class="form-input w-full sm:text-sm sm:leading-5 rounded-md" placeholder="Search...">
                         <button type="submit" class="ml-3 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">
@@ -50,9 +52,11 @@
                       </div>
                     </form>
                   </div>
+                  
+                 
                 @include('layouts.nav')
             </div>
-        </header>
+        </nav>
         
 
         <div class="content @yield('content-class')">
