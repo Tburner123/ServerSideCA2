@@ -7,7 +7,7 @@
     <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent bg-gray-800 md:bg-transparent border-gray-700">
     @if(Auth::check() && Auth::user()->isAdmin())
     <li>
-        <a class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded bg-blue-600" aria-current="page" href="/admin/users">Users</a>
+        <a class="block py-2 pl-3 pr-4  rounded hover:bg-blue-800 text-4xl font-normal text-white  hover:bg-blue-800 hover:text-gray-900" aria-current="page" href="/admin/users">Users</a>
     </li>
     <li>
         <a class="block py-2 pl-3 pr-4  rounded hover:bg-blue-800 text-4xl font-normal text-white  hover:bg-blue-800 hover:text-gray-900" href="/">Home</a>

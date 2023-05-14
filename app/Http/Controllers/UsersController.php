@@ -54,33 +54,43 @@ class UsersController extends Controller
     public function show(User $user)
     {
          return view('admin.users.show')->with('user',$user)->with('posts',$user->post);
-    }
+     }
 
     public function edit(User $user)
     {
+        if(Auth::user()->id == $user->id || Auth::user()->isAdmin())
         return view('admin.users.edit')->with('user',$user)->with('roles',Role::all());
+        else
+            return abort(404);
+
     }
 
     public function update(Request $request, User $user){
-        $flag = false ;
-        if($user->role_id === 1){
-            $flag = true;
-        }
-        $request->validate([
-            "name" => "required",
-            "email" => "required",
-            "role" => "required",
-        ]);
-        $role = Role::where('name',$request->role)->first();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->role()->associate($role);
-        $user->save();
+        if(Auth::user()->id == $user->id || Auth::user()->isAdmin()) {
 
-        if($flag){
-            return view('blog.index')->with('posts', Post::orderBy('updated_at', 'DESC')->get());
+            $flag = false;
+            if ($user->role_id === 1) {
+                $flag = true;
+            }
+            $request->validate([
+                "name" => "required",
+                "email" => "required",
+                "role" => "required",
+            ]);
+            $role = Role::where('name', $request->role)->first();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->role()->associate($role);
+            $user->save();
+
+            if ($flag) {
+                return view('blog.index')->with('posts', Post::orderBy('updated_at', 'DESC')->get());
+            }
+            return redirect()->route('admin.users.index');
         }
-        return redirect()->route('admin.users.index');
+        else{
+            return abort(404);
+        }
     }
 
 
@@ -89,4 +99,8 @@ class UsersController extends Controller
         return redirect()->route('admin.users.index')->with('success','User deleted successfully');
     }
 
+    public function search($keyword){
+        $users = User::where('name','LIKE','%'.$keyword.'%')->get();
+        return view('admin.users.index')->with('users',$users);
+    }
 }

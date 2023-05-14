@@ -32,10 +32,10 @@ Route::get('/userTable', [App\Http\Controllers\AdminController::class, 'userTabl
 Route::resource('/comment',  App\Http\Controllers\CommentsController::class );
 Route::resource('/users',UsersController::class);
 Route::put('/change/{user}', [UsersController::class, 'update'])->name('change');
-
 Route::middleware('admin.auth')->group(function () {
     Route::group(['prefix' => '/admin', 'as' => 'admin.',], function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
-        Route::resource('/users',UsersController::class);
+        Route::resource('/users', UsersController::class);
+        Route::get('/users', [UsersController::class, 'filter'])->name('user.filter');
     });
 });

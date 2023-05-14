@@ -11,7 +11,7 @@
 
 @if (session()->has('message'))
     <div class="w-4/5 m-auto mt-10 pl-2">
-        <p class="w-2/6 mb-4 text-gray-50 bg-green-500 rounded-2xl py-4">
+        <p class="w-2/6 mb-4 text-gray-50 bg-green-500 rounded-2xl py-4 text-center">
             {{ session()->get('message') }}
         </p>
     </div>
@@ -19,7 +19,7 @@
 
 @if (Auth::check())
     <div class="pt-15 w-4/5 m-auto">
-        <a 
+        <a
             href="/blog/create"
             class="bg-blue-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
             Create post
@@ -32,7 +32,7 @@
         <div class="col-span-1"  >
             <img  src="{{ asset('images/' . $post->image_path) }}"  class ="blogIndex"alt="">
         </div>
-        <div div class="col-span-2"> 
+        <div div class="col-span-2">
             <h2 class="text-gray-700 font-bold text-5xl pb-4">
                 {{ $post->title }}
             </h2>
@@ -49,9 +49,9 @@
                 Keep Reading
             </a>
 
-            @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
+            @if (\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->id == $post->user_id || \Illuminate\Support\Facades\Auth::user()->isAdmin())
                 <span class="float-right">
-                    <a 
+                    <a
                         href="/blog/{{ $post->slug }}/edit"
                         class="text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">
                         Edit
@@ -59,7 +59,7 @@
                 </span>
 
                 <span class="float-right">
-                     <form 
+                     <form
                         action="/blog/{{ $post->slug }}"
                         method="POST">
                         @csrf
@@ -75,7 +75,7 @@
                 </span>
             @endif
         </div>
-    </div>    
+    </div>
 @endforeach
 
 @endsection
