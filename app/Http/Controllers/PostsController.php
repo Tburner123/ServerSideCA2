@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -48,7 +49,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        $tags = Tag::all();
+        return view('blog.create')->with('tags', $tags);
     }
 
     /**

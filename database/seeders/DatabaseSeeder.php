@@ -53,5 +53,20 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
         $admin->save();
+
+        // Create a constant tag
+        $tag = new \App\Models\Tag([
+            'tag' => 'Action',
+            'description' => 'action game',
+        ]);
+
+        $tag->save();
+
+        // Create a constant tag
+        $tag = new \App\Models\Tag([
+            'tag' => 'Adventure',
+            'description' => 'adventure game',
+        ]);
+        $tag->save();
     }
 }
