@@ -15,6 +15,7 @@
     <!-- Styles -->
     {{-- <link href="{{ mix('css/app.css') }}" rel="stylesheet"> --}}
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css?v=').time()}}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     {{-- <style  
     type="text/css">
     .background-image1
@@ -29,6 +30,7 @@
   
 }
     </style> --}}
+    
     
 </head>
 <body class="@yield('content-class') bg-gray-100 h-screen antialiased leading-none font-sans">
@@ -68,4 +70,11 @@
         </div>
     </div>
 </body>
+<script>
+    $(document).ready(function(){
+      $("#button").click(function(){
+        $("#my-div").toggleClass("hidden");
+      });
+    });
+</script>
 </html>
