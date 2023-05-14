@@ -14,9 +14,12 @@ class CreatePostsAndTagsTable extends Migration
     public function up()
     {
         Schema::create('posts_and_tags', function (Blueprint $table) {
-            $table->unsignedInteger('post_id');
-            $table->unsignedInteger('tag_id');
+            $table->id();
+            $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('tag_id');
             $table->timestamps();
+            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('tag_id')->references('id')->on('tags');
         });
     }
 
