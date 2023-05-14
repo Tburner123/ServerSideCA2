@@ -66,6 +66,7 @@ Here are the resources we used to build this project:
 
 ## Styling 
 In our Laravel app, we utilized **TailwindCSS** **CSS** for styling and customizing the appearance of our website. With Tailwind, we were able to easily add pre-defined classes to our HTML elements and create a visually appealing and responsive design. We also used **JavaScript** to add interactivity to our app. By combining these two technologies, we were able to create a modern and user-friendly interface for our website, which enhanced the overall user experience.
+![image](https://github.com/Tburner123/ServerSideCA2/blob/main/images%20for%20the%20app/md1.png)
 
 ## Functions
 The website will have the following features:
