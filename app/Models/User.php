@@ -49,8 +49,9 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function role(){
-        return $this->belongsTo(Role::class);
+    public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Role::class, 'role_id');
     }
 
     public function isAdmin(): bool
